@@ -11,6 +11,9 @@
 </head>
 <body>
 
+  <!-- Reading Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
+
   <!-- Top Bar -->
   <header class="top-bar">
     <div class="top-bar-inner">
@@ -18,6 +21,9 @@
         <span class="logo-icon">&#9889;</span>
         <span class="logo-text">WS</span>
       </div>
+      <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon" id="toggle-icon">&#9789;</span>
+      </button>
     </div>
   </header>
 
@@ -52,26 +58,99 @@
     <!-- Hero + Sidebar Row -->
     <div class="hero-row">
 
-      <!-- Hero Article -->
+      <!-- Hero Carousel -->
       <article class="hero">
-        <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=960&h=540&fit=crop" alt="City skyline at night with power lines">
-          <div class="hero-image-overlay">
-            <button class="listen-btn">&#9654; Read article</button>
-          </div>
-        </div>
-        <div class="hero-body">
-          <h2 class="hero-title">Can we transfer electricity wirelessly?</h2>
-          <div class="hero-meta-row">
-            <p class="hero-subtitle">Could power be beamed into hard-to-reach communities and might our homes become wire free?</p>
-            <div class="hero-meta">
-              <span class="meta-badge">Available now</span>
-              <span class="meta-duration">&#128337; 8 min read</span>
+        <div class="carousel" id="carousel">
+          <div class="carousel-slides">
+
+            <div class="carousel-slide active" data-slide="0">
+              <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=960&h=540&fit=crop" loading="eager" alt="City skyline at night with power lines">
+                <div class="hero-image-overlay">
+                  <button class="listen-btn">&#9654; Read article</button>
+                </div>
+              </div>
+              <div class="hero-body">
+                <h2 class="hero-title">Can we transfer electricity wirelessly?</h2>
+                <div class="hero-meta-row">
+                  <p class="hero-subtitle">Could power be beamed into hard-to-reach communities and might our homes become wire free?</p>
+                  <div class="hero-meta">
+                    <span class="meta-badge">Available now</span>
+                    <span class="meta-duration">&#128337; 8 min read</span>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div class="carousel-slide" data-slide="1">
+              <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=960&h=540&fit=crop" loading="lazy" alt="Solar panels in space">
+                <div class="hero-image-overlay">
+                  <button class="listen-btn">&#9654; Read article</button>
+                </div>
+              </div>
+              <div class="hero-body">
+                <h2 class="hero-title">Wireless Power Beaming from Space</h2>
+                <div class="hero-meta-row">
+                  <p class="hero-subtitle">Solar satellites could harvest energy in orbit and transmit it to ground stations via microwave beams — delivering clean power around the clock.</p>
+                  <div class="hero-meta">
+                    <span class="meta-badge">Featured</span>
+                    <span class="meta-duration">&#128337; 6 min read</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-slide="2">
+              <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=960&h=540&fit=crop" loading="lazy" alt="Galaxy and stars in deep space">
+                <div class="hero-image-overlay">
+                  <button class="listen-btn">&#9654; Read article</button>
+                </div>
+              </div>
+              <div class="hero-body">
+                <h2 class="hero-title">What Keeps the Universe in Balance?</h2>
+                <div class="hero-meta-row">
+                  <p class="hero-subtitle">From the forces that keep stars burning to the dark energy pushing galaxies apart — the universe is a finely tuned balancing act.</p>
+                  <div class="hero-meta">
+                    <span class="meta-badge">Editor's pick</span>
+                    <span class="meta-duration">&#128337; 8 min read</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-slide="3">
+              <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=960&h=540&fit=crop" loading="lazy" alt="Coral reef underwater">
+                <div class="hero-image-overlay">
+                  <button class="listen-btn">&#9654; Read article</button>
+                </div>
+              </div>
+              <div class="hero-body">
+                <h2 class="hero-title">How Can We Save the Great Barrier Reef?</h2>
+                <div class="hero-meta-row">
+                  <p class="hero-subtitle">Australian scientists are racing to protect the world's largest coral system from bleaching with cloud brightening and heat-resistant coral breeding.</p>
+                  <div class="hero-meta">
+                    <span class="meta-badge">Environment</span>
+                    <span class="meta-duration">&#128337; 7 min read</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="hero-actions">
-            <button class="btn-show-more">Show more</button>
-            <a href="#" class="btn-download">&#8595; Save article</a>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-controls">
+            <button class="carousel-arrow carousel-prev" id="carousel-prev">&#8249;</button>
+            <div class="carousel-indicators" id="carousel-indicators">
+              <button class="carousel-dot active" data-slide="0"></button>
+              <button class="carousel-dot" data-slide="1"></button>
+              <button class="carousel-dot" data-slide="2"></button>
+              <button class="carousel-dot" data-slide="3"></button>
+            </div>
+            <button class="carousel-arrow carousel-next" id="carousel-next">&#8250;</button>
           </div>
         </div>
       </article>
@@ -120,7 +199,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=480&h=270&fit=crop" alt="Solar panels in space">
+            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=480&h=270&fit=crop" loading="lazy" alt="Solar panels in space">
           </div>
           <div class="card-body">
             <span class="card-topic">Space Energy</span>
@@ -135,7 +214,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=480&h=270&fit=crop" alt="Power transmission tower">
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=480&h=270&fit=crop" loading="lazy" alt="Power transmission tower">
           </div>
           <div class="card-body">
             <span class="card-topic">Innovation</span>
@@ -150,7 +229,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=480&h=270&fit=crop" alt="Electric bus at charging station">
+            <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=480&h=270&fit=crop" loading="lazy" alt="Electric bus at charging station">
           </div>
           <div class="card-body">
             <span class="card-topic">Transport</span>
@@ -165,7 +244,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=480&h=270&fit=crop" alt="Tesla coil sparks">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=480&h=270&fit=crop" loading="lazy" alt="Tesla coil sparks">
           </div>
           <div class="card-body">
             <span class="card-topic">History</span>
@@ -180,7 +259,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1509390144018-eeaf65052242?w=480&h=270&fit=crop" alt="Laser beam in laboratory">
+            <img src="https://images.unsplash.com/photo-1509390144018-eeaf65052242?w=480&h=270&fit=crop" loading="lazy" alt="Laser beam in laboratory">
           </div>
           <div class="card-body">
             <span class="card-topic">Off-Grid</span>
@@ -195,7 +274,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=480&h=270&fit=crop" alt="Modern living room with devices">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=480&h=270&fit=crop" loading="lazy" alt="Modern living room with devices">
           </div>
           <div class="card-body">
             <span class="card-topic">Future Living</span>
@@ -210,7 +289,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=480&h=270&fit=crop" alt="Radio waves illustration">
+            <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=480&h=270&fit=crop" loading="lazy" alt="Radio waves illustration">
           </div>
           <div class="card-body">
             <span class="card-topic">Physics</span>
@@ -225,7 +304,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=480&h=270&fit=crop" alt="Galaxy and stars in deep space">
+            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=480&h=270&fit=crop" loading="lazy" alt="Galaxy and stars in deep space">
           </div>
           <div class="card-body">
             <span class="card-topic">Cosmology</span>
@@ -240,7 +319,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=480&h=270&fit=crop" alt="Coral reef underwater">
+            <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=480&h=270&fit=crop" loading="lazy" alt="Coral reef underwater">
           </div>
           <div class="card-body">
             <span class="card-topic">Environment</span>
@@ -255,7 +334,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1503792501406-2c40da09f1e2?w=480&h=270&fit=crop" alt="Primate hand close-up">
+            <img src="https://images.unsplash.com/photo-1503792501406-2c40da09f1e2?w=480&h=270&fit=crop" loading="lazy" alt="Primate hand close-up">
           </div>
           <div class="card-body">
             <span class="card-topic">Evolution</span>
@@ -270,7 +349,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=480&h=270&fit=crop" alt="Light waves and optics">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=480&h=270&fit=crop" loading="lazy" alt="Light waves and optics">
           </div>
           <div class="card-body">
             <span class="card-topic">Optics</span>
@@ -285,7 +364,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=480&h=270&fit=crop" alt="Fish swimming in ocean">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=480&h=270&fit=crop" loading="lazy" alt="Fish swimming in ocean">
           </div>
           <div class="card-body">
             <span class="card-topic">Animal Cognition</span>
@@ -300,7 +379,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=480&h=270&fit=crop" alt="Person in quiet room">
+            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=480&h=270&fit=crop" loading="lazy" alt="Person in quiet room">
           </div>
           <div class="card-body">
             <span class="card-topic">Neuroscience</span>
@@ -315,7 +394,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=480&h=270&fit=crop" alt="Sun and UV rays">
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=480&h=270&fit=crop" loading="lazy" alt="Sun and UV rays">
           </div>
           <div class="card-body">
             <span class="card-topic">Dermatology</span>
@@ -330,7 +409,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=480&h=270&fit=crop" alt="Human eye close-up">
+            <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=480&h=270&fit=crop" loading="lazy" alt="Human eye close-up">
           </div>
           <div class="card-body">
             <span class="card-topic">Biology</span>
@@ -345,7 +424,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1534996858221-380b92700493?w=480&h=270&fit=crop" alt="Night sky with stars and light pollution">
+            <img src="https://images.unsplash.com/photo-1534996858221-380b92700493?w=480&h=270&fit=crop" loading="lazy" alt="Night sky with stars and light pollution">
           </div>
           <div class="card-body">
             <span class="card-topic">Astronomy</span>
@@ -360,7 +439,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=480&h=270&fit=crop" alt="Person sleeping and dreaming">
+            <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=480&h=270&fit=crop" loading="lazy" alt="Person sleeping and dreaming">
           </div>
           <div class="card-body">
             <span class="card-topic">Neuroscience</span>
@@ -375,7 +454,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=480&h=270&fit=crop" alt="Mars surface landscape">
+            <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=480&h=270&fit=crop" loading="lazy" alt="Mars surface landscape">
           </div>
           <div class="card-body">
             <span class="card-topic">Space</span>
@@ -390,7 +469,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1534996858221-380b92700493?w=480&h=270&fit=crop" alt="Black hole in space">
+            <img src="https://images.unsplash.com/photo-1534996858221-380b92700493?w=480&h=270&fit=crop" loading="lazy" alt="Black hole in space">
           </div>
           <div class="card-body">
             <span class="card-topic">Astrophysics</span>
@@ -405,7 +484,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=480&h=270&fit=crop" alt="Left hand writing">
+            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=480&h=270&fit=crop" loading="lazy" alt="Left hand writing">
           </div>
           <div class="card-body">
             <span class="card-topic">Genetics</span>
@@ -420,7 +499,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=480&h=270&fit=crop" alt="Sunlight through forest canopy">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=480&h=270&fit=crop" loading="lazy" alt="Sunlight through forest canopy">
           </div>
           <div class="card-body">
             <span class="card-topic">Botany</span>
@@ -435,7 +514,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1480044965905-02098d419e96?w=480&h=270&fit=crop" alt="Flock of birds in migration">
+            <img src="https://images.unsplash.com/photo-1480044965905-02098d419e96?w=480&h=270&fit=crop" loading="lazy" alt="Flock of birds in migration">
           </div>
           <div class="card-body">
             <span class="card-topic">Zoology</span>
@@ -450,7 +529,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=480&h=270&fit=crop" alt="Clock and time concept">
+            <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=480&h=270&fit=crop" loading="lazy" alt="Clock and time concept">
           </div>
           <div class="card-body">
             <span class="card-topic">Theoretical Physics</span>
@@ -465,7 +544,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=480&h=270&fit=crop" alt="Music and headphones">
+            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=480&h=270&fit=crop" loading="lazy" alt="Music and headphones">
           </div>
           <div class="card-body">
             <span class="card-topic">Psychology</span>
@@ -480,7 +559,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=480&h=270&fit=crop" alt="Lab-grown organ tissue">
+            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=480&h=270&fit=crop" loading="lazy" alt="Lab-grown organ tissue">
           </div>
           <div class="card-body">
             <span class="card-topic">Bioengineering</span>
@@ -495,7 +574,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=480&h=270&fit=crop" alt="Northern lights aurora borealis">
+            <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=480&h=270&fit=crop" loading="lazy" alt="Northern lights aurora borealis">
           </div>
           <div class="card-body">
             <span class="card-topic">Geophysics</span>
@@ -510,7 +589,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=480&h=270&fit=crop" alt="Cat purring close-up">
+            <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=480&h=270&fit=crop" loading="lazy" alt="Cat purring close-up">
           </div>
           <div class="card-body">
             <span class="card-topic">Zoology</span>
@@ -525,7 +604,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=480&h=270&fit=crop" alt="Quantum computing chip">
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=480&h=270&fit=crop" loading="lazy" alt="Quantum computing chip">
           </div>
           <div class="card-body">
             <span class="card-topic">Computing</span>
@@ -540,7 +619,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=480&h=270&fit=crop" alt="Tardigrade micro-organism">
+            <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=480&h=270&fit=crop" loading="lazy" alt="Tardigrade micro-organism">
           </div>
           <div class="card-body">
             <span class="card-topic">Microbiology</span>
@@ -555,7 +634,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=480&h=270&fit=crop" alt="Ocean waves and deep blue sea">
+            <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=480&h=270&fit=crop" loading="lazy" alt="Ocean waves and deep blue sea">
           </div>
           <div class="card-body">
             <span class="card-topic">Oceanography</span>
@@ -570,7 +649,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1509390144018-eeaf65052242?w=480&h=270&fit=crop" alt="Seismograph measuring earthquake">
+            <img src="https://images.unsplash.com/photo-1509390144018-eeaf65052242?w=480&h=270&fit=crop" loading="lazy" alt="Seismograph measuring earthquake">
           </div>
           <div class="card-body">
             <span class="card-topic">Geology</span>
@@ -585,7 +664,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?w=480&h=270&fit=crop" alt="Volcanic eruption with lava">
+            <img src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?w=480&h=270&fit=crop" loading="lazy" alt="Volcanic eruption with lava">
           </div>
           <div class="card-body">
             <span class="card-topic">Geology</span>
@@ -600,7 +679,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=480&h=270&fit=crop" alt="Surgery operating room">
+            <img src="https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=480&h=270&fit=crop" loading="lazy" alt="Surgery operating room">
           </div>
           <div class="card-body">
             <span class="card-topic">Medicine</span>
@@ -615,7 +694,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=480&h=270&fit=crop" alt="Elderly hands showing ageing">
+            <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=480&h=270&fit=crop" loading="lazy" alt="Elderly hands showing ageing">
           </div>
           <div class="card-body">
             <span class="card-topic">Biology</span>
@@ -630,7 +709,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=480&h=270&fit=crop" alt="Deep ocean submarine">
+            <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=480&h=270&fit=crop" loading="lazy" alt="Deep ocean submarine">
           </div>
           <div class="card-body">
             <span class="card-topic">Marine Science</span>
@@ -645,7 +724,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=480&h=270&fit=crop" alt="Dark matter galaxy cluster">
+            <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=480&h=270&fit=crop" loading="lazy" alt="Dark matter galaxy cluster">
           </div>
           <div class="card-body">
             <span class="card-topic">Cosmology</span>
@@ -660,7 +739,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=480&h=270&fit=crop" alt="Bandage on healing wound">
+            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=480&h=270&fit=crop" loading="lazy" alt="Bandage on healing wound">
           </div>
           <div class="card-body">
             <span class="card-topic">Medicine</span>
@@ -675,7 +754,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1545671913-b89d1b6a0c10?w=480&h=270&fit=crop" alt="Octopus underwater">
+            <img src="https://images.unsplash.com/photo-1545671913-b89d1b6a0c10?w=480&h=270&fit=crop" loading="lazy" alt="Octopus underwater">
           </div>
           <div class="card-body">
             <span class="card-topic">Animal Cognition</span>
@@ -690,7 +769,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=480&h=270&fit=crop" alt="Mushrooms growing on forest floor">
+            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=480&h=270&fit=crop" loading="lazy" alt="Mushrooms growing on forest floor">
           </div>
           <div class="card-body">
             <span class="card-topic">Mycology</span>
@@ -705,7 +784,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=480&h=270&fit=crop" alt="Chilli peppers close-up">
+            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=480&h=270&fit=crop" loading="lazy" alt="Chilli peppers close-up">
           </div>
           <div class="card-body">
             <span class="card-topic">Chemistry</span>
@@ -720,7 +799,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=480&h=270&fit=crop" alt="Radio telescope dish at night">
+            <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=480&h=270&fit=crop" loading="lazy" alt="Radio telescope dish at night">
           </div>
           <div class="card-body">
             <span class="card-topic">Astrobiology</span>
@@ -735,7 +814,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=480&h=270&fit=crop" alt="Person meditating at sunrise">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=480&h=270&fit=crop" loading="lazy" alt="Person meditating at sunrise">
           </div>
           <div class="card-body">
             <span class="card-topic">Neuroscience</span>
@@ -750,7 +829,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1470058869958-2a77bde3e86a?w=480&h=270&fit=crop" alt="Fireflies glowing at night">
+            <img src="https://images.unsplash.com/photo-1470058869958-2a77bde3e86a?w=480&h=270&fit=crop" loading="lazy" alt="Fireflies glowing at night">
           </div>
           <div class="card-body">
             <span class="card-topic">Biology</span>
@@ -765,7 +844,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=480&h=270&fit=crop" alt="Glass window with light passing through">
+            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=480&h=270&fit=crop" loading="lazy" alt="Glass window with light passing through">
           </div>
           <div class="card-body">
             <span class="card-topic">Materials Science</span>
@@ -780,7 +859,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=480&h=270&fit=crop" alt="DNA double helix illustration">
+            <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=480&h=270&fit=crop" loading="lazy" alt="DNA double helix illustration">
           </div>
           <div class="card-body">
             <span class="card-topic">Genetics</span>
@@ -795,7 +874,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=480&h=270&fit=crop" alt="Confused expression déjà vu">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=480&h=270&fit=crop" loading="lazy" alt="Confused expression déjà vu">
           </div>
           <div class="card-body">
             <span class="card-topic">Psychology</span>
@@ -810,7 +889,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=480&h=270&fit=crop" alt="Vaccine syringe and vial">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=480&h=270&fit=crop" loading="lazy" alt="Vaccine syringe and vial">
           </div>
           <div class="card-body">
             <span class="card-topic">Immunology</span>
@@ -825,7 +904,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1551085254-e96b210db58a?w=480&h=270&fit=crop" alt="Bioluminescent jellyfish glowing">
+            <img src="https://images.unsplash.com/photo-1551085254-e96b210db58a?w=480&h=270&fit=crop" loading="lazy" alt="Bioluminescent jellyfish glowing">
           </div>
           <div class="card-body">
             <span class="card-topic">Marine Biology</span>
@@ -840,7 +919,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?w=480&h=270&fit=crop" alt="Fungi mushrooms on log">
+            <img src="https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?w=480&h=270&fit=crop" loading="lazy" alt="Fungi mushrooms on log">
           </div>
           <div class="card-body">
             <span class="card-topic">Ecology</span>
@@ -855,7 +934,7 @@
 
         <article class="article-card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=480&h=270&fit=crop" alt="Gravitational lensing effect in space">
+            <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=480&h=270&fit=crop" loading="lazy" alt="Gravitational lensing effect in space">
           </div>
           <div class="card-body">
             <span class="card-topic">Physics</span>
@@ -879,7 +958,7 @@
           <h2 class="section-title">Clips</h2>
           <div class="clip-card">
             <div class="clip-image">
-              <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=360&h=200&fit=crop" alt="Electric guitar with energy beam">
+              <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=360&h=200&fit=crop" loading="lazy" alt="Electric guitar with energy beam">
               <div class="clip-duration">02:39</div>
             </div>
             <div class="clip-body">
@@ -893,7 +972,7 @@
           <h2 class="section-title">Podcast</h2>
           <div class="podcast-card">
             <div class="podcast-art">
-              <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=160&h=160&fit=crop" alt="WaveScience podcast artwork">
+              <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=160&h=160&fit=crop" loading="lazy" alt="WaveScience podcast artwork">
             </div>
             <div class="podcast-body">
               <h4 class="podcast-name">WaveScience Weekly</h4>
@@ -1203,50 +1282,130 @@
     </div>
   </footer>
 
+  <script src="articles.js"></script>
   <script>
-    // Search functionality
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
-    const articlesGrid = document.querySelector('.articles-grid');
-    const articleCards = Array.from(document.querySelectorAll('.article-card'));
-    const archiveItems = Array.from(document.querySelectorAll('.archive-item'));
-    const noResults = document.createElement('p');
+    // ===========================
+    // 1. Reading Progress Bar
+    // ===========================
+    var progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+
+    // ===========================
+    // 2. Dark Mode Toggle
+    // ===========================
+    var darkToggle = document.getElementById('dark-mode-toggle');
+    var toggleIcon = document.getElementById('toggle-icon');
+    var savedTheme = localStorage.getItem('ws-theme');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      toggleIcon.textContent = '\u2600';
+    }
+
+    darkToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      var isDark = document.body.classList.contains('dark-mode');
+      toggleIcon.textContent = isDark ? '\u2600' : '\u263D';
+      localStorage.setItem('ws-theme', isDark ? 'dark' : 'light');
+    });
+
+    // ===========================
+    // 3. Hero Carousel
+    // ===========================
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.carousel-dot');
+    var prevBtn = document.getElementById('carousel-prev');
+    var nextBtn = document.getElementById('carousel-next');
+    var currentSlide = 0;
+    var totalSlides = slides.length;
+    var autoplayInterval;
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = (index + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayInterval);
+      startAutoplay();
+    }
+
+    prevBtn.addEventListener('click', function() {
+      goToSlide(currentSlide - 1);
+      resetAutoplay();
+    });
+
+    nextBtn.addEventListener('click', function() {
+      goToSlide(currentSlide + 1);
+      resetAutoplay();
+    });
+
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goToSlide(parseInt(dot.dataset.slide));
+        resetAutoplay();
+      });
+    });
+
+    startAutoplay();
+
+    // ===========================
+    // 4. Search
+    // ===========================
+    var searchInput = document.getElementById('search-input');
+    var searchBtn = document.getElementById('search-btn');
+    var articlesGrid = document.querySelector('.articles-grid');
+    var articleCards = Array.from(document.querySelectorAll('.article-card'));
+    var archiveItems = Array.from(document.querySelectorAll('.archive-item'));
+    var noResults = document.createElement('p');
     noResults.className = 'no-results';
     noResults.textContent = 'No articles found.';
 
     function performSearch() {
-      const query = searchInput.value.toLowerCase().trim();
+      var query = searchInput.value.toLowerCase().trim();
 
-      // Search article cards
-      let visibleCards = 0;
+      var visibleCards = 0;
       articleCards.forEach(function(card) {
-        const title = card.querySelector('.card-title').textContent.toLowerCase();
-        const excerpt = card.querySelector('.card-excerpt').textContent.toLowerCase();
-        const topic = card.querySelector('.card-topic').textContent.toLowerCase();
-        const match = !query || title.includes(query) || excerpt.includes(query) || topic.includes(query);
+        var title = card.querySelector('.card-title').textContent.toLowerCase();
+        var excerpt = card.querySelector('.card-excerpt').textContent.toLowerCase();
+        var topic = card.querySelector('.card-topic').textContent.toLowerCase();
+        var match = !query || title.includes(query) || excerpt.includes(query) || topic.includes(query);
         card.style.display = match ? '' : 'none';
         if (match) visibleCards++;
       });
 
-      // Show/hide no results message
-      const existingMsg = articlesGrid.querySelector('.no-results');
+      var existingMsg = articlesGrid.querySelector('.no-results');
       if (visibleCards === 0 && query) {
         if (!existingMsg) articlesGrid.appendChild(noResults);
       } else if (existingMsg) {
         existingMsg.remove();
       }
 
-      // Search archive items
       archiveItems.forEach(function(item) {
-        const link = item.querySelector('.archive-link').textContent.toLowerCase();
-        const topic = item.querySelector('.archive-topic').textContent.toLowerCase();
-        const match = !query || link.includes(query) || topic.includes(query);
+        var link = item.querySelector('.archive-link').textContent.toLowerCase();
+        var topic = item.querySelector('.archive-topic').textContent.toLowerCase();
+        var match = !query || link.includes(query) || topic.includes(query);
         item.style.display = match ? '' : 'none';
       });
 
-      // Hide empty month groups
       document.querySelectorAll('.archive-month-group').forEach(function(group) {
-        const visibleItems = group.querySelectorAll('.archive-item:not([style*="display: none"])');
+        var visibleItems = group.querySelectorAll('.archive-item:not([style*="display: none"])');
         group.style.display = visibleItems.length === 0 && query ? 'none' : '';
       });
     }
@@ -1257,13 +1416,15 @@
       if (e.key === 'Enter') performSearch();
     });
 
-    // Archive year filtering
-    const yearBtns = document.querySelectorAll('.archive-year-btn');
+    // ===========================
+    // 5. Archive Year Filtering
+    // ===========================
+    var yearBtns = document.querySelectorAll('.archive-year-btn');
     yearBtns.forEach(function(btn) {
       btn.addEventListener('click', function() {
         yearBtns.forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        const year = btn.dataset.year;
+        var year = btn.dataset.year;
 
         document.querySelectorAll('.archive-month-group').forEach(function(group) {
           if (year === 'all' || group.dataset.year === year) {
@@ -1273,6 +1434,57 @@
           }
         });
       });
+    });
+
+    // ===========================
+    // 6. Lazy Image Fade-In
+    // ===========================
+    document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+      img.classList.add('lazy-img');
+      if (img.complete) {
+        img.classList.add('loaded');
+      } else {
+        img.addEventListener('load', function() {
+          img.classList.add('loaded');
+        });
+      }
+    });
+
+    // ===========================
+    // 7. Make Article Cards Clickable
+    // ===========================
+    function normalize(text) {
+      return text.toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    function findArticle(title) {
+      var norm = normalize(title);
+      return ARTICLES.find(function(a) {
+        return normalize(a.title) === norm;
+      });
+    }
+
+    // Link article cards
+    document.querySelectorAll('.article-card').forEach(function(card) {
+      var title = card.querySelector('.card-title').textContent;
+      var match = findArticle(title);
+      if (match) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function() {
+          window.location.href = 'article.html?id=' + match.slug;
+        });
+      }
+    });
+
+    // Link carousel slides
+    document.querySelectorAll('.carousel-slide').forEach(function(slide) {
+      var title = slide.querySelector('.hero-title').textContent;
+      var match = findArticle(title);
+      if (match) {
+        slide.querySelector('.listen-btn').addEventListener('click', function() {
+          window.location.href = 'article.html?id=' + match.slug;
+        });
+      }
     });
   </script>
 

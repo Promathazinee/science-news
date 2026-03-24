@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaveScience — Article</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:6px;text-decoration:none;">
+          <span class="logo-icon">&#9889;</span>
+          <span class="logo-text">WS</span>
+        </a>
+      </div>
+      <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon" id="toggle-icon">&#9789;</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Brand Banner -->
+  <div class="brand-banner">
+    <div class="brand-banner-inner">
+      <a href="index.html" style="color:#fff;text-decoration:none;"><h1 class="brand-name">WaveScience</h1></a>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-inner">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#articles" class="nav-link active">Articles</a>
+        <a href="index.html#archive" class="nav-link">Archive</a>
+        <a href="index.html#clips" class="nav-link">Clips</a>
+        <a href="index.html#about" class="nav-link">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Article Content -->
+  <main class="content-wrapper">
+    <div class="article-page">
+
+      <a href="index.html" class="back-link">&larr; Back to all articles</a>
+
+      <div class="article-header" id="article-header">
+        <span class="card-topic" id="article-topic"></span>
+        <h1 class="article-page-title" id="article-title"></h1>
+        <div class="article-page-meta">
+          <span id="article-date"></span>
+          <span id="article-read-time"></span>
+          <span class="article-author" id="article-author"></span>
+        </div>
+      </div>
+
+      <div class="article-hero-img" id="article-hero-img"></div>
+
+      <div class="article-content" id="article-content">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="article-footer-nav">
+        <a href="#" class="article-nav-link prev" id="nav-prev" style="display:none;">&larr; <span id="prev-title"></span></a>
+        <a href="#" class="article-nav-link next" id="nav-next" style="display:none;"><span id="next-title"></span> &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">&#9889;</span> WaveScience
+      </div>
+      <p class="footer-tagline">Wireless energy and science news — from Tesla's dream to tomorrow's grid.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#articles">Articles</a>
+        <a href="index.html#archive">Archive</a>
+        <a href="index.html#about">About</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 WaveScience. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="articles.js"></script>
+  <script>
+    // Progress bar
+    var progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+
+    // Dark mode
+    var darkToggle = document.getElementById('dark-mode-toggle');
+    var toggleIcon = document.getElementById('toggle-icon');
+    if (localStorage.getItem('ws-theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      toggleIcon.textContent = '\u2600';
+    }
+    darkToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      var isDark = document.body.classList.contains('dark-mode');
+      toggleIcon.textContent = isDark ? '\u2600' : '\u263D';
+      localStorage.setItem('ws-theme', isDark ? 'dark' : 'light');
+    });
+
+    // Load article
+    var params = new URLSearchParams(window.location.search);
+    var slug = params.get('id');
+    var article = ARTICLES.find(function(a) { return a.slug === slug; });
+
+    if (article) {
+      document.title = article.title + ' — WaveScience';
+      document.getElementById('article-topic').textContent = article.topic;
+      document.getElementById('article-title').textContent = article.title;
+      document.getElementById('article-date').textContent = article.date;
+      document.getElementById('article-read-time').textContent = article.readTime;
+      document.getElementById('article-author').textContent = 'By ' + article.author;
+      document.getElementById('article-hero-img').innerHTML = '<img src="' + article.image.replace('480', '1200').replace('270', '675') + '" alt="' + article.title + '">';
+      document.getElementById('article-content').innerHTML = article.body;
+
+      // Prev/Next navigation
+      var idx = ARTICLES.indexOf(article);
+      if (idx > 0) {
+        var prev = ARTICLES[idx - 1];
+        document.getElementById('nav-prev').href = 'article.html?id=' + prev.slug;
+        document.getElementById('prev-title').textContent = prev.title;
+        document.getElementById('nav-prev').style.display = '';
+      }
+      if (idx < ARTICLES.length - 1) {
+        var next = ARTICLES[idx + 1];
+        document.getElementById('nav-next').href = 'article.html?id=' + next.slug;
+        document.getElementById('next-title').textContent = next.title;
+        document.getElementById('nav-next').style.display = '';
+      }
+    } else {
+      document.getElementById('article-header').innerHTML = '<h1 class="article-page-title">Article not found</h1><p style="color:#888;margin-top:12px;">The article you\'re looking for doesn\'t exist. <a href="index.html" style="color:#0a6e4e;">Return home</a>.</p>';
+    }
+  </script>
+
+</body>
+</html>

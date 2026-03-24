@@ -38,6 +38,43 @@ button {
   font-family: inherit;
 }
 
+/* --- Reading Progress Bar --- */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #0a6e4e, #1a9a6c);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* --- Dark Mode Toggle --- */
+.dark-mode-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.toggle-icon {
+  font-size: 16px;
+  color: #fff;
+  line-height: 1;
+}
+
 /* --- Top Bar (Black BBC-style header) --- */
 .top-bar {
   background: #000;
@@ -51,6 +88,9 @@ button {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -195,9 +235,83 @@ button {
   border-bottom: 1px solid #ddd;
 }
 
-/* Hero Article */
+/* Hero Article & Carousel */
 .hero {
   border-right: 1px solid #ddd;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel-slides {
+  position: relative;
+}
+
+.carousel-slide {
+  display: none;
+  animation: carouselFadeIn 0.5s ease;
+}
+
+.carousel-slide.active {
+  display: block;
+}
+
+@keyframes carouselFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 0 16px;
+}
+
+.carousel-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e8e8e8;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.carousel-arrow:hover {
+  background: #0a6e4e;
+  color: #fff;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.carousel-dot:hover {
+  background: #999;
+}
+
+.carousel-dot.active {
+  background: #0a6e4e;
+  transform: scale(1.2);
 }
 
 .hero-image {
@@ -799,6 +913,371 @@ button {
   letter-spacing: 0.06em;
   color: #b8312f;
   white-space: nowrap;
+}
+
+/* --- Article Page --- */
+.article-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a6e4e;
+  margin-bottom: 24px;
+  transition: color 0.15s;
+}
+
+.back-link:hover {
+  color: #085a3e;
+  text-decoration: underline;
+}
+
+.article-header {
+  margin-bottom: 24px;
+}
+
+.article-page-title {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0a0a0a;
+  margin: 8px 0 16px;
+}
+
+.article-page-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #888;
+  flex-wrap: wrap;
+}
+
+.article-author {
+  font-weight: 600;
+  color: #555;
+}
+
+.article-hero-img {
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  background: #e8e8e8;
+}
+
+.article-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-content {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #2a2a2a;
+}
+
+.article-content p {
+  margin-bottom: 20px;
+}
+
+.article-footer-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #ddd;
+}
+
+.article-nav-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0a6e4e;
+  max-width: 45%;
+  transition: color 0.15s;
+}
+
+.article-nav-link:hover {
+  color: #085a3e;
+  text-decoration: underline;
+}
+
+.article-nav-link.next {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Article page dark mode */
+body.dark-mode .article-page-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .article-page-meta {
+  color: #777;
+}
+
+body.dark-mode .article-author {
+  color: #aaa;
+}
+
+body.dark-mode .article-content {
+  color: #ccc;
+}
+
+body.dark-mode .article-footer-nav {
+  border-top-color: #333;
+}
+
+body.dark-mode .article-nav-link {
+  color: #1a9a6c;
+}
+
+body.dark-mode .back-link {
+  color: #1a9a6c;
+}
+
+/* --- Lazy Image Fade-In --- */
+img.lazy-img {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+img.lazy-img.loaded {
+  opacity: 1;
+}
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+body.dark-mode {
+  background: #111;
+  color: #e0e0e0;
+}
+
+body.dark-mode .content-wrapper {
+  background: #1a1a1a;
+}
+
+body.dark-mode .hero {
+  border-right-color: #333;
+}
+
+body.dark-mode .hero-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .hero-subtitle {
+  color: #aaa;
+}
+
+body.dark-mode .hero-body {
+  background: #1a1a1a;
+}
+
+body.dark-mode .hero-row {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .sidebar {
+  background: #1f1f1f;
+}
+
+body.dark-mode .sidebar-heading {
+  color: #f0f0f0;
+}
+
+body.dark-mode .sidebar-date strong {
+  color: #e0e0e0;
+}
+
+body.dark-mode .episode-link {
+  color: #e0e0e0;
+}
+
+body.dark-mode .episode-link:hover {
+  color: #1a9a6c;
+}
+
+body.dark-mode .sidebar-episode {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .section-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .articles-section {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .article-card {
+  background: #222;
+  border-color: #333;
+}
+
+body.dark-mode .article-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .card-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .card-excerpt {
+  color: #aaa;
+}
+
+body.dark-mode .card-meta {
+  color: #777;
+}
+
+body.dark-mode .clips-section {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .clip-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .clip-meta {
+  color: #aaa;
+}
+
+body.dark-mode .podcast-name {
+  color: #f0f0f0;
+}
+
+body.dark-mode .podcast-tagline {
+  color: #aaa;
+}
+
+body.dark-mode .related-links li {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .related-links a {
+  color: #1a9a6c;
+}
+
+body.dark-mode .link-domain {
+  color: #666;
+}
+
+body.dark-mode .archive-section {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .archive-intro {
+  color: #888;
+}
+
+body.dark-mode .archive-year-btn {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #bbb;
+}
+
+body.dark-mode .archive-year-btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+body.dark-mode .archive-year-btn.active {
+  background: #0a6e4e;
+  border-color: #0a6e4e;
+  color: #fff;
+}
+
+body.dark-mode .archive-month {
+  color: #e0e0e0;
+  border-bottom-color: #333;
+}
+
+body.dark-mode .archive-item {
+  border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .archive-link {
+  color: #e0e0e0;
+}
+
+body.dark-mode .archive-link:hover {
+  color: #1a9a6c;
+}
+
+body.dark-mode .archive-date {
+  color: #666;
+}
+
+body.dark-mode .main-nav {
+  background: #1f1f1f;
+  border-bottom-color: #333;
+}
+
+body.dark-mode .nav-link {
+  color: #999;
+}
+
+body.dark-mode .nav-link:hover {
+  color: #fff;
+  background: #2a2a2a;
+}
+
+body.dark-mode .nav-link.active {
+  color: #fff;
+  background: #333;
+}
+
+body.dark-mode .search-input {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .search-input:focus {
+  background: #333;
+  border-color: #0a6e4e;
+}
+
+body.dark-mode .carousel-arrow {
+  background: #333;
+  color: #ccc;
+}
+
+body.dark-mode .carousel-arrow:hover {
+  background: #0a6e4e;
+  color: #fff;
+}
+
+body.dark-mode .carousel-dot {
+  background: #555;
+}
+
+body.dark-mode .carousel-dot.active {
+  background: #0a6e4e;
+}
+
+body.dark-mode .btn-show-more {
+  color: #1a9a6c;
+  border-bottom-color: #1a9a6c;
+}
+
+body.dark-mode .meta-duration {
+  color: #888;
+}
+
+body.dark-mode .no-results {
+  color: #666;
+}
+
+body.dark-mode .listen-btn {
+  background: rgba(0, 0, 0, 0.9);
 }
 
 /* --- Responsive --- */
